@@ -1,14 +1,5 @@
 const db = require("../data/db-config");
 
-module.exports = {
-  find,
-  findById,
-  findSteps,
-  add,
-  update,
-  remove,
-};
-
 function find() {
   return db("schemes");
 }
@@ -26,7 +17,6 @@ function findSteps(id) {
 }
 
 function add(scheme) {
-  // console.log(scheme)
   return db("schemes as sc")
     .insert(scheme, "id")
     .then((ids) => {
@@ -41,3 +31,11 @@ function update(changes, id) {
 function remove(id) {
   return db("schemes").del().where({ id });
 }
+module.exports = {
+  find,
+  findById,
+  findSteps,
+  add,
+  update,
+  remove,
+};
